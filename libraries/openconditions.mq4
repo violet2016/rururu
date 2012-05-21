@@ -2,7 +2,7 @@
 #include "type.mqh"
 #property library
 
-#define DEBUG 1 
+#define DEBUG 0 
 
 bool IsOnGrid(int op, double grid, double offset)
 {
