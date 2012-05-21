@@ -21,7 +21,7 @@ bool CheckAndOpen(int op, int magic)
 	if (
 		IsOnGrid(op, grid, 0.0) &&
 		IsNewOpenPrice(op, slippage, magic) &&
-		LastOrderHasProfit(op, 0, magic)
+		LastOrderHasProfit(op, slippage, magic)
 	)
 	{
 		double o_price = GetOpenPrice(op);
