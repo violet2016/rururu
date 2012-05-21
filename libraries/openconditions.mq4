@@ -69,7 +69,8 @@ bool LastOrderHasProfit(int op, double min_profit, int magic)
 	{
 		if (DEBUG > 0)
 		{
-			Print("**!** open condition LastOrderHasProfit: profit ", OrderProfit(), " op ", op, " cnt ", cnt, " open price ", OrderOpenPrice(), " /true/");
+			double price = GetClosePrice(op);
+			Print("**!** open condition LastOrderHasProfit: profit ", OrderProfit(), " cnt ", cnt, " open price ", OrderOpenPrice(), " close price ", price, " /true/");
 		}
 
 		return (true);
