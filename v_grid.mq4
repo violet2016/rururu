@@ -1,8 +1,8 @@
-#include "../libraries/base.mqh"
-#include "../libraries/type.mqh"
-#include "../libraries/openclose.mqh"
-#include "../libraries/openconditions.mqh"
-#include "../libraries/closeconditions.mqh"
+#include "libraries/base.mqh"
+#include "libraries/type.mqh"
+#include "libraries/openclose.mqh"
+#include "libraries/openconditions.mqh"
+#include "libraries/closeconditions.mqh"
 #include "v_grid_config.mqh"
 
 #property copyright "Violet"
