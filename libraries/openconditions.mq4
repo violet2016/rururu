@@ -2,7 +2,7 @@
 #include "type.mqh"
 #property library
 
-#define DEBUG 0 
+#define DEBUG 1 
 
 bool IsOnGrid(int op, double grid, double offset)
 {
@@ -67,12 +67,13 @@ bool LastOrderHasProfit(int op, double min_profit, int magic)
 	}
 	if (OrderProfit() > min_profit)
 	{
+		/*
 		if (DEBUG > 0)
 		{
 			double price = GetClosePrice(op);
 			Print("**!** open condition LastOrderHasProfit: profit ", OrderProfit(), " cnt ", cnt, " open price ", OrderOpenPrice(), " close price ", price, " /true/");
 		}
-
+		*/
 		return (true);
 	}
 	return (false);
@@ -88,6 +89,10 @@ bool IsNewOpenPriceToLastOrder(int op, int slippage_p, int magic)
 	}
 	if (MathAbs(OrderOpenPrice()-price) > slippage_p*VPOINT)
 	{
+		if (DEBUG > 0)
+		{
+			Print("**!** open condition IsNewOpenPriceToLastOrder: cnt ", cnt, "last open price ", OrderOpenPrice(), " /true/");
+		}
 		return (true);	
 	}
 	return (false);
