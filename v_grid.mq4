@@ -4,7 +4,6 @@
 #include "libraries/openconditions.mqh"
 #include "libraries/closeconditions.mqh"
 #include "v_grid_config.mqh"
-
 #property copyright "Violet"
 
 double grid = 0.0;
@@ -34,10 +33,8 @@ bool CheckAndOpen(int op, int magic)
 
 void CheckAndClose(int magic)
 {
-	if (TotalProfitLargerThan(TOTAL_PROFIT, magic))
-	{
-		CloseAllMagic(magic);	
-	}
+//	CloseAllWithTotalProfit(TOTAL_PROFIT, magic);
+	CloseWithTrailingStop(PROFIT_POINT, MOVETS_PERCENT, magic);
 }
 
 int start()

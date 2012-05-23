@@ -1,8 +1,9 @@
 #include "base.mqh"
 #include "type.mqh"
+#include "openclose.mqh"
 #property library
 
-#define DEBUG 1 
+#define DEBUG 0 
 
 bool IsOnGrid(int op, double grid, double offset)
 {
@@ -65,6 +66,9 @@ bool LastOrderHasProfit(int op, double min_profit, int magic)
 		*/
 		return (true);
 	}
+	if (OrderSelect(cnt, SELECT_BY_POS, MODE_TRADES) == false)
+		return (false);
+	
 	if (OrderProfit() > min_profit)
 	{
 		/*
@@ -87,13 +91,28 @@ bool IsNewOpenPriceToLastOrder(int op, int slippage_p, int magic)
 	{
 		return (true);
 	}
+	if (OrderSelect(cnt, SELECT_BY_POS, MODE_TRADES) == false)
+		return (false);
 	if (MathAbs(OrderOpenPrice()-price) > slippage_p*VPOINT)
 	{
-		if (DEBUG > 0)
-		{
-			Print("**!** open condition IsNewOpenPriceToLastOrder: cnt ", cnt, "last open price ", OrderOpenPrice(), " /true/");
-		}
 		return (true);	
+	}
+	return (false);
+}
+
+bool IsOnSlotFibonacci(int op, int base, int magic)
+{
+	int slot_p = CalculateSlotFibonacci(op, base, magic);
+	int cnt = TypeSelectLastOrder(op, magic);
+	if (cnt < 0)
+	{
+		return (true);
+	}
+	double price = GetOpenPrice(op);
+	OrderSelect(cnt, SELECT_BY_POS, MODE_TRADES);
+	if (MathAbs(OrderOpenPrice()-price)>slot_p*VPOINT && OrderProfit()>SLIPPAGE)
+	{
+		return (true);
 	}
 	return (false);
 }

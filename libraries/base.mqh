@@ -4,6 +4,7 @@ double GetOpenPrice(int op);
 double GetClosePrice(int op);
 color GetOpenColor(int op);
 color GetCloseColor(int op);
+color GetModifyColor(int op);
 
 double TypeGetTotalProfit(int op, int magic);
 double GetTotalProfit(int magic);

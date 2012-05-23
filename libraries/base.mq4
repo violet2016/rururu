@@ -3,8 +3,10 @@
 
 #define CLOSE_COLOR_BUY Red
 #define	OPEN_COLOR_BUY HotPink
+#define MODIFY_COLOR_BUY IndianRed
 #define CLOSE_COLOR_SELL Blue
 #define OPEN_COLOR_SELL RoyalBlue
+#define MODIFY_COLOR_SELL SteelBlue
 
 double GetOpenPrice(int op)
 {
@@ -57,6 +59,20 @@ color GetCloseColor(int op)
 	}
 	return (Black);
 }
+
+color GetModifyColor(int op)
+{
+	if (op == OP_SELL)
+	{
+		return (MODIFY_COLOR_SELL);
+	}
+	else if (op == OP_BUY)
+	{
+		return (MODIFY_COLOR_BUY);
+	}
+	return (Black);
+}
+
 
 double TypeGetTotalProfit(int op, int magic)
 {

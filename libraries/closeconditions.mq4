@@ -30,4 +30,3 @@ bool ProfitLargerThan(double profit)
 		return (false);
 	}
 }
-
